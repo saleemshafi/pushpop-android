@@ -1,6 +1,16 @@
+function byebye() {
+	PushPopUI.pauseTimer();
+}
+
+function welcomeBack() {
+	PushPopUI.resumeTimer();
+}
+
 
 document.addEventListener("deviceready", function() {
 	setTimeout(function() {
+		window.plugins.admob.onPresentScreen("byebye()");
+		window.plugins.admob.onDismissScreen("welcomeBack()");
 		window.plugins.admob.showAd();
 	}, 1000);
 }, false);

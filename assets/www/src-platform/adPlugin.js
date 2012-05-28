@@ -39,6 +39,20 @@ AdMob.prototype.hideAd = function(successCallback, failureCallback) {
 		[]); // Passing list of args to the plugin
 };
 
+AdMob.prototype.onPresentScreen = function(handlerJs, successCallback, failureCallback) {
+	this.onEvent("presentScreen", handlerJs, successCallback, failureCallback);
+};
+
+AdMob.prototype.onDismissScreen = function(handlerJs, successCallback, failureCallback) {
+	this.onEvent("dismissScreen", handlerJs, successCallback, failureCallback);
+};
+
+AdMob.prototype.onEvent = function(event, handlerJs, successCallback, failureCallback) {
+	return PhoneGap.exec(successCallback, failureCallback, 
+		'AdMobPlugin', 'onEvent',
+		[event, handlerJs]);
+};
+
 cordova.addConstructor(function() {
 	console.log("----loading the admob plugin----");
 	cordova.addPlugin("admob", new AdMob());
