@@ -11,6 +11,10 @@ public class App extends DroidGap {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.setIntegerProperty("splashscreen", R.drawable.splash_small);
+        super.setStringProperty("loadingDialog", "PushPop,Loading...");
+        super.setIntegerProperty("backgroundColor", 0xff121212);
+        this.root.setBackgroundResource(R.drawable.splash_small);
         super.loadUrl("file:///android_asset/www/src/index.html");
     }
     
